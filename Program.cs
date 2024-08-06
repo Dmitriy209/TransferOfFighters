@@ -58,9 +58,11 @@ namespace TransferOfFighters
 
         private void TransferSoldiers(char letter = 'Б')
         {
-            _secondSquad = _secondSquad.Union(_firstSquad.Where(soldier => soldier.LastName[0] == letter)).ToList();
+            List<Soldier> transferSquad = _firstSquad.Where(soldier => soldier.LastName[0] == letter).ToList();
 
-            _firstSquad = _firstSquad.Except(_secondSquad).ToList();
+            _firstSquad = _firstSquad.Except(transferSquad).ToList();
+
+            _secondSquad = _secondSquad.Union(transferSquad).ToList();
         }
     }
 
