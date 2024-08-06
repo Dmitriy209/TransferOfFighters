@@ -60,7 +60,7 @@ namespace TransferOfFighters
         {
             _secondSquad = _secondSquad.Union(_firstSquad.Where(soldier => soldier.LastName[0] == letter)).ToList();
 
-            _firstSquad.RemoveAll(soldier => soldier.LastName[0] == letter);
+            _firstSquad = _firstSquad.Except(_secondSquad).ToList();
         }
     }
 
